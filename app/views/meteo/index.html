@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <title>Estación Meteorológica Politécnica</title>
+  </head>
+  <body>
+    <div id="contenedor">
+      <header id="titulo"> <strong>Estación Meteorológica
+          Politécnico</strong> </header>
+      <div id="menu"> <a href="minombre.html" target="_self"> Nombre </a> </div>
+      <div id="menu2"> <a href="config.html" target="_self"> Configuración </a>
+      </div>
+      <div id="informacion">
+        <script>document.getElementById("informacion").innerHTML="Hola " + localStorage.fname</script>.
+        Bienvenido a la Estación UAH-POL</div>
+      <div id="menutablas"> <a href="tablas.html" target="_self"> Estaciones </a> </div>
+      <div id="menugaleria"> <a href="galeria.html" target="_self"> Galería </a>
+      </div>
+      <div id="relleno">Página Principal</div>
+      <div id="estacion" class="estacion">
+        <h2>Datos de la estación</h2>
+        <ul>
+          <li>Country: Spain</li>
+          <li>City: Alcalá de Henares</li>
+          <li>Location: 40.514223, -3.348577</li>
+          <li><a href="https://maps.google.es/" target="_blank">Google Maps</a></li>
+        </ul>
+        <img class="visible" src="images/EstacionMet.jpg" alt="estación meteorológica"
+          border="1"
+          hspace="120">
+        <img class="novisible" src="images/EstacionMet2.jpg" alt="estación meteorológica"
+          border="1"
+          hspace="120">
+      </div>
+      <div id="sensores">
+        <h2>Datos de los sensores</h2>
+        <table width="70%" align="center" border="1">
+          <tbody>
+            <tr>
+              <td>Temperatura (º)</td>
+              <td>25<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Humedad (%)</td>
+              <td>18<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Dirección de viento</td>
+              <td>NE<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Velocidad viento (km/h)</td>
+              <td>15<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Presión Atmosférica (hPa)</td>
+              <td>1119.4<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Lluvia (mm) últimas 2 horas</td>
+              <td>0<br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <center>
+          <script type="text/javascript" src="http://www.aemet.es/es/eltiempo/prediccion/municipios/launchwidget/alcala-de-henares-id28005?w=g4p01110000ohmffffffw380z147x4f86d9t95b6e9r1s2n1"></script></center>
+      </div>
+      <footer id="pie"> <strong>Universidad de Alcalá</strong> </footer>
+    </div>
+  </body>
+</html>

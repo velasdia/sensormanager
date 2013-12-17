@@ -1,0 +1,1 @@
+json.extract! @concentrador, :id, :CategoriaEquipo_id, :nombre, :descripcion, :estado, :gis_latitud, :gis_longitud, :mac_address, :numero_serie, :ip_address, :ip_port, :access_url, :created_at, :updated_at

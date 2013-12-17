@@ -1,0 +1,37 @@
+CACHE MANIFEST
+#Los comentarios se ponen así
+
+CACHE:
+images/EstacionMet.jpg
+images/EstacionMet2.jpg
+images/1.jpg
+images/2.jpg
+images/3.jpg
+images/4.jpg
+images/5.jpg
+images/6.jpg
+images/izq.png
+images/der.png
+css/estilos.css
+
+
+NETWORK:
+index.html
+minombre.html
+config.html
+galeria.html
+tablas.html
+
+
+FALLBACK:
+images/EstacionMet.jpg
+images/EstacionMet2.jpg
+images/1.jpg
+images/2.jpg
+images/3.jpg
+images/4.jpg
+images/5.jpg
+images/6.jpg
+images/izq.png
+images/der.png
+css/estilos.css

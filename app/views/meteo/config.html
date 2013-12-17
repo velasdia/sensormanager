@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <title>Configuración</title>
+    <script language="JavaScript">   
+      function confirmarPais()
+      { 
+          switch (document.getElementById("country_list").value)
+          {
+            case "España":
+              break;
+            case "Italia":
+              break;
+            case "Inglaterra":
+              break;
+            case "Grecia":
+              break;
+            case "Francia":
+              break;
+            case "Suiza":
+              break;
+            case "Luxemburgo":
+              break;
+            default:
+              alert("País Erróneo");
+              document.getElementById("country_list").value="";
+          }
+      }
+      
+      function funcionAjax()
+      {
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+ 			{// code for IE7+, Firefox, Chrome, Opera, Safari
+  				xmlhttp=new XMLHttpRequest();
+  			}
+			else
+  			{// code for IE6, IE5
+  				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+			xmlhttp.onreadystatechange=function()
+  			{
+  				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+   				{
+    				document.getElementById("city").value=xmlhttp.responseText;
+    			}
+  			}
+  			switch (document.getElementById("country_list").value)
+          	{
+            	case "España":
+            		xmlhttp.open("GET","espana.txt",true);
+					xmlhttp.send();
+              		break;
+            	case "Italia":
+            		xmlhttp.open("GET","italia.txt",true);
+					xmlhttp.send();
+              		break;
+            	case "Francia":
+            		xmlhttp.open("GET","francia.txt",true);
+					xmlhttp.send();
+              		break;
+			}
+	 }
+      
+      function confirmarContr ()
+      {
+          var contr = document.getElementById("pwd").value;
+          var aceptar;
+          if (contr.length < 5)
+          {
+             alert("La contraseña debe tener, al menos, 5 caracteres.");
+             document.getElementById("pwd").value="";
+          }
+          else
+          {
+            
+            if (contr.length == 5)
+            {
+               aceptar = confirm("La calidad de la contraseña es BAJA, ¿desea que esta sea su contraseña?");
+               if (!aceptar)
+                 document.getElementById("pwd").value="";          
+            }
+            if ((contr.length > 5) && (contr.length <10))
+            {
+               aceptar = confirm("La calidad de la contraseña es MEDIA, ¿desea que esta sea su contraseña?");
+               if (!aceptar)
+                 document.getElementById("pwd").value="";
+            }
+            if ((contr.length >= 10) && (contr.length <= 15))
+            {
+               aceptar = confirm("La calidad de la contraseña es EXCELENTE");
+               if (!aceptar)
+                 document.getElementById("pwd").value="";
+            }
+            if (contr.length > 15)
+            {
+               alert("La contraseña debe tener menos de 16 caracteres.");
+               document.getElementById("pwd").value="";
+            }
+          }
+      }
+      function confirmarTemp ()
+      {
+          if (document.getElementById("TMax").value < document.getElementById("TMin").value)
+          {
+             alert("La temperatura máxima DEBE ser mayor que la mínima");
+          }  
+      }
+      
+      function genUbicacion (campo)
+      {
+		
+        var exp = /(^N|S\s[0-90º.]\s[0-60'.]\s[0-60".]\sE|O\s[0-180º.]\s[0-60'.]\s[0-60".]$)|(^N|S\s[0-90.]\sE|O\s[0-180.]$)/;
+        if(!exp.test(campo))
+        {
+          alert("Formato no válido, formato correcto: N o S numº num' num\", E o O numº num' num\"");
+          document.getElementById("loc").value="";
+          return;
+        }
+        var i = 0;
+        var j = 0;
+        var array = campo.split(" ");
+        var O = false;
+        var S = false;
+        var enlace = "http://maps.google.com/maps?q=";
+
+        if ((array[4]=="O")||(array[2]=="O")) //Si hay coordenada Oeste hay que poner -
+            O = true;
+        if (array[0]=="S") //Si hay coordenada Sur hay que poner -
+            S = true;
+        
+        var longArray = array.length;
+        
+        if  (longArray == 8)
+        { 
+        	for (i=0;i<array.length;i++)
+        	{
+          		if (i == 1)
+          		{
+            		if (S == true)
+            		{
+              			array[i] = "+-"+array[i];
+              			enlace = enlace + array[i];
+            		}
+            		else
+            		{
+              			array[i] = "+"+array[i];
+              			enlace = enlace + array[i];
+            		}
+          		}
+          		if (i == 2 || i == 3 || i == 6 || i == 7)
+            	{
+              		array[i] = "+"+array[i];
+              		enlace = enlace + array[i];
+            	}
+          		if (i == 5)
+          		{
+            		if (O == true)
+            		{
+              			array[i] = "+-"+array[i];
+              			enlace = enlace + array[i];
+            		}
+            		else
+            		{
+              			array[i] = "+"+array[i];
+              			enlace = enlace + array[i];
+            		}
+          		}
+        	}
+        	murl.value=enlace;
+        }
+        else if (longArray == 4)
+        	{
+        		for (i=0;i<array.length;i++)
+        		{
+          			if (i == 1)
+          			{
+            			if (S == true)
+            			{
+              				array[i] = "+-"+array[i];
+              				enlace = enlace + array[i];
+            			}
+            			else
+            			{
+              				array[i] = "+"+array[i];
+              				enlace = enlace + array[i];
+            			}
+          			}
+          			if (i == 3)
+          			{
+            			if (O == true)
+            			{
+              				array[i] = "+-"+array[i];
+              				enlace = enlace + array[i];
+            			}
+            			else
+            			{
+              				array[i] = "+"+array[i];
+              				enlace = enlace + array[i];
+            			}
+          			}
+        		}
+        		murl.value=enlace;
+        	}
+        	
+        //murl.value=enlace;
+        
+      }
+      function asterisco()
+      {
+        if(document.getElementById("country_list").value == "")
+          alert("El campo Country está vacío y es OBLIGATORIO");
+        if(document.getElementById("city").value == "")
+          alert("El campo City está vacío y es OBLIGATORIO");
+        if(document.getElementById("pwd").value == "")
+          alert("El campo Password está vacío y es OBLIGATORIO");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="contenedor">
+      <header id="titulo"> <strong>Estación Meteorológica
+          Politécnico</strong> </header>
+      <div class="multicolumna">
+        <form name="formulario"> <br>
+          <h2 class="multicolumna">Datos de la estación</h2>
+          Country*: <input list="country" id="country_list" onblur="confirmarPais();"><datalist
+            id="country">
+            <option value="España"></option>
+            <option value="Italia"></option>
+            <option value="Grecia"></option>
+            <option value="Inglaterra"></option>
+            <option value="Francia"></option>
+          </datalist> <br>
+          City*:<input id="city" name="city" onfocus="funcionAjax();"><br>
+          Location:<input id="loc" name="location" onblur="genUbicacion(loc.value);"
+            type="text"><br>
+          Map URL:<input id="murl" name="map" type="url"><br>
+          Foto: <input name="foto" multiple="" enctype="multipart/form-data" action="uploader.php"
+            value="Seleccionar archivo" type="file"><br>
+          Password*:<input id="pwd" name="pwd" onblur="confirmarContr();" type="password"><br>
+          <br>
+          Los campos marcados con * son obligatorios
+          <hr> <button onclick="asterisco();">Enviar datos</button> <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h2 class="multicolumna">Seleccione los sensores</h2>
+          <input name="temperatura" type="checkbox">Temperatura<br>
+          <input name="presion" type="checkbox">Presión<br>
+          <input name="lluvia" type="checkbox">Lluvia<br>
+          <input name="direccionviento" type="checkbox">Dirección viento<br>
+          <input name="velocidadviento" type="checkbox">Velocidad viento<br>
+          <br>
+          <h2 class="multicolumna">Configure Alertas</h2>
+        </form>
+        <form oninput="diferencia.value=parseInt(TMax.value)-parseInt(TMin.value)">
+          Temperatura Máxima: <input id="TMax" value="50" min="10" max="50" onblur="confirmarTemp();"
+            type="number"><br>
+          Temperatura Mínima: <input id="TMin" value="-10" min="-10" max="20" onblur="confirmarTemp();"
+            type="number"><br>
+          Diferencia entre temperaturas = <output name="diferencia" for="TMax TMin"></output></form>
+      </div>
+      <div id="volver"> <a href="index.html" target="_self">Volver a la página
+          principal</a> </div>
+      <footer id="pie"> <strong>Universidad de Alcalá</strong> </footer>
+    </div>
+  </body>
+</html>

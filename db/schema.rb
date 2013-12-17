@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103012624) do
+ActiveRecord::Schema.define(version: 20131213164535) do
 
   create_table "categoria_equipos", force: true do |t|
     t.string   "nombre"
@@ -20,11 +20,16 @@ ActiveRecord::Schema.define(version: 20131103012624) do
     t.datetime "updated_at"
   end
 
+  create_table "categoriaequipos", force: true do |t|
+    t.string "nombre",      limit: 50
+    t.text   "descripcion", limit: 16777215
+  end
+
   create_table "concentradors", force: true do |t|
-    t.integer  "categoria_equipo_id"
+    t.integer  "CategoriaEquipo_id"
     t.string   "nombre"
     t.string   "descripcion"
-    t.string   "clave_externa"
+    t.string   "estado"
     t.float    "gis_latitud"
     t.float    "gis_longitud"
     t.string   "mac_address"
@@ -35,5 +40,33 @@ ActiveRecord::Schema.define(version: 20131103012624) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "concentradors", ["CategoriaEquipo_id"], name: "index_concentradors_on_CategoriaEquipo_id", using: :btree
+
+  create_table "medidas", force: true do |t|
+    t.integer  "Sensor_id"
+    t.datetime "fecha"
+    t.float    "valor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "medidas", ["Sensor_id"], name: "index_medidas_on_Sensor_id", using: :btree
+
+  create_table "sensors", force: true do |t|
+    t.integer  "Concentrador_id"
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.string   "estado"
+    t.string   "parametro"
+    t.float    "valor"
+    t.string   "uds"
+    t.float    "gis_latitud"
+    t.float    "gis_longitud"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sensors", ["Concentrador_id"], name: "index_sensors_on_Concentrador_id", using: :btree
 
 end
