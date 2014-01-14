@@ -1,0 +1,19 @@
+
+<h1>Estaciones asociadas</h1>
+
+<%if @concentradors.blank?%>
+<p>No hay estaciones asociadas a esa categoria.</p>
+<%else%>
+
+<strong>Estas son las estaciones asociadas a la categoria seleccionada:</strong>
+
+<ul id="estaciones">
+
+  <%@concentradors.each do |c|%>
+    <li><%=c.nombre%></li>
+  <%end%> 
+</ul>
+
+<%end%>
+
+<%= link_to 'Back', categoria_equipos_path %>

@@ -13,6 +13,10 @@ Sensormanager::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'categoria_equipos#index'
+ 
+  get 'categoria_equipos/:id/estaciones' => 'categoria_equipos#estaciones', as: :estaciones
+
+  # post 'categoria_equipos/estaciones' => 'categoria_equipos#estaciones'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

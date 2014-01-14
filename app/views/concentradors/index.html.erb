@@ -23,7 +23,7 @@
   <tbody>
     <% @concentradors.each do |concentrador| %>
       <tr>
-        <td><%= concentrador.CategoriaEquipo %></td>
+        <td><%= concentrador.CategoriaEquipo.nombre %></td>
         <td><%= concentrador.nombre %></td>
         <td><%= concentrador.descripcion %></td>
         <td><%= concentrador.estado %></td>

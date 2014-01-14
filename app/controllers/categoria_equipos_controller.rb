@@ -7,6 +7,14 @@ class CategoriaEquiposController < ApplicationController
     @categoria_equipos = CategoriaEquipo.all
   end
 
+  #GET /categoria_equipos/:id/estaciones
+  def estaciones()
+   #@concentradors = CategoriaEquipo.joins('INNER JOIN concentradors ON concentradors.CategoriaEquipo_id = categoria_equipos.id')
+   #@concentradors = Concentrador.find(:all, :conditions=>["concentradors.CategoriaEquipo_id=categoria_equipos.id"])
+   #@concentradors = Concentrador.where('concentradors.CategoriaEquipo_id=categoria_equipos.id')
+   @concentradors = Concentrador.joins('INNER JOIN categoria_equipos ON concentradors.CategoriaEquipo_id = categoria_equipos.id')
+  end
+
   # GET /categoria_equipos/1
   # GET /categoria_equipos/1.json
   def show
@@ -65,6 +73,9 @@ class CategoriaEquiposController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_categoria_equipo
       @categoria_equipo = CategoriaEquipo.find(params[:id])
+   # rescue ActiveRecord::RecordNotFound
+    #  flash[:notice] = 'Ese objeto no existe'
+     # redirect_to :action => 'estaciones'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
