@@ -1,4 +1,6 @@
 Sensormanager::Application.routes.draw do
+  resources :usuarios_emails
+
   resources :medidas
 
   resources :sensors
@@ -19,6 +21,8 @@ Sensormanager::Application.routes.draw do
   get 'concentradors/:id/sensores' => 'concentradors#sensores', as: :sensores
 
   get 'sensors/:id/valores' => 'sensors#valores', as: :valores
+
+  post 'usuarios_emails/:id' => 'usuarios_emails#enviarCorreo', as: :enviarCorreo
 
   # post 'categoria_equipos/estaciones' => 'categoria_equipos#estaciones'
 

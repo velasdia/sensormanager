@@ -1,0 +1,32 @@
+<h1>Listing usuarios_emails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Identificador</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios_emails.each do |usuarios_email| %>
+      <tr>
+        <td><%= usuarios_email.nombre %></td>
+        <td><%= usuarios_email.email %></td>
+        <td><%= usuarios_email.identificador %></td>
+        <td><%= link_to 'Show', usuarios_email %></td>
+        <td><%= link_to 'Edit', edit_usuarios_email_path(usuarios_email) %></td>
+        <td><%= link_to 'Destroy', usuarios_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Enviar Correo',{:action=>'enviarCorreo', :id=>usuarios_email.id} %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Usuarios email', new_usuarios_email_path %>

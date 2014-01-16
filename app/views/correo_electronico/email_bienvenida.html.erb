@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/htmlÃ; charset=UTF-8' http-equiv='Content-Type'/>
+  </head>
+  <body>
+    <h1>Probando envio de e-mails</h1>
+    <h2>Bienvenido a AutoEscuelaArganda, <%= @user.nombre%></h2>
+    <p>
+       Tu correo ha sido enviado satisfactoriamente y su identificador es:
+       <%= @user.identificador %>.<br/>
+    </p>
+    <p>
+       Nos puedes visitar en: <a href="<%= @url %>"> </a>
+    </p>
+  </body>
+</html>         
