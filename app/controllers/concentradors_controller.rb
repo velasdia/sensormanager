@@ -12,6 +12,11 @@ class ConcentradorsController < ApplicationController
   def show
   end
 
+  # GET /concentradors/:id/sensores
+  def sensores()
+   @sensors = Sensor.joins('INNER JOIN concentradors ON sensors.Concentrador_id = concentradors.id')
+  end
+
   # GET /concentradors/new
   def new
     @concentrador = Concentrador.new

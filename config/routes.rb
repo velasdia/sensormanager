@@ -16,6 +16,10 @@ Sensormanager::Application.routes.draw do
  
   get 'categoria_equipos/:id/estaciones' => 'categoria_equipos#estaciones', as: :estaciones
 
+  get 'concentradors/:id/sensores' => 'concentradors#sensores', as: :sensores
+
+  get 'sensors/:id/valores' => 'sensors#valores', as: :valores
+
   # post 'categoria_equipos/estaciones' => 'categoria_equipos#estaciones'
 
   # Example of regular route:

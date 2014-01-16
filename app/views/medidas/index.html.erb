@@ -15,7 +15,7 @@
   <tbody>
     <% @medidas.each do |medida| %>
       <tr>
-        <td><%= medida.Sensor %></td>
+        <td><%= medida.Sensor.nombre %></td>
         <td><%= medida.fecha %></td>
         <td><%= medida.valor %></td>
         <td><%= link_to 'Show', medida %></td>

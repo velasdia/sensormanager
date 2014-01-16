@@ -12,6 +12,11 @@ class SensorsController < ApplicationController
   def show
   end
 
+  # GET /sensors/:id/medidas
+  def valores()
+    @valores = Medida.joins('INNER JOIN sensors ON medidas.Sensor_id = sensors.id')
+  end
+
   # GET /sensors/new
   def new
     @sensor = Sensor.new
