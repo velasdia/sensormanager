@@ -21,8 +21,8 @@ Sensormanager::Application.configure do
     address:		'smtp.gmail.com',
     port:		587,
     domain:		'gmail.com',
-    user_name:		'velasdia@gmail.com',
-    password:		'bdk&5253',
+    user_name:		'usuarioEjemplo@gmail.com',
+    password:		'pass',
     authentication:	'plain',
     enable_starttls_auto: true }
 

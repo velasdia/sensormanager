@@ -9,10 +9,12 @@ class CategoriaEquiposController < ApplicationController
 
   #GET /categoria_equipos/:id/estaciones
   def estaciones()
+   #@prueba = :categoria_equipo
    #@concentradors = CategoriaEquipo.joins('INNER JOIN concentradors ON concentradors.CategoriaEquipo_id = categoria_equipos.id')
    #@concentradors = Concentrador.find(:all, :conditions=>["concentradors.CategoriaEquipo_id=categoria_equipos.id"])
    #@concentradors = Concentrador.where('concentradors.CategoriaEquipo_id=categoria_equipos.id')
-   @concentradors = Concentrador.joins('INNER JOIN categoria_equipos ON concentradors.CategoriaEquipo_id = categoria_equipos.id')
+   #@concentradors = Concentrador.joins('INNER JOIN categoria_equipos ON concentradors.CategoriaEquipo_id = categoria_equipos.id')
+   @concentradors = Concentrador.find_by_sql('SELECT concentradors.nombre FROM concentradors,categoria_equipos WHERE concentradors.CategoriaEquipo_id = categoria_equipos.id')
   end
 
   # GET /categoria_equipos/1

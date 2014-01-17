@@ -14,7 +14,7 @@ class UsuariosEmailsController < ApplicationController
  
 #  def enviarCorreo
     #Creamos un usuario
- #   @usuario = UsuariosEmail.create({nombre:'Andres Vedia', email:'velasdia@hotmail.com', identificador:'1234'})
+ #   @usuario = UsuariosEmail.create({nombre:'NombreEjemplo', email:'emailEjemplo@email.com', identificador:'1234'})
     #Llamamos al ActionMailer que creamos
    # CorreoElectronico.email_bienvenida(@usuario).deliver
     #Mostramos el usuario en formato JSON
