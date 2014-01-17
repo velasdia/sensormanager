@@ -21,7 +21,6 @@
         <td><%= link_to 'Show', usuarios_email %></td>
         <td><%= link_to 'Edit', edit_usuarios_email_path(usuarios_email) %></td>
         <td><%= link_to 'Destroy', usuarios_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Enviar Correo',{:action=>'enviarCorreo', :id=>usuarios_email.id} %>
       </tr>
     <% end %>
   </tbody>

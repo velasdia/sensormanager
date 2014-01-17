@@ -12,14 +12,14 @@ class UsuariosEmailsController < ApplicationController
   def show
   end
  
-  def enviarCorreo
+#  def enviarCorreo
     #Creamos un usuario
-    @usuario = UsuariosEmail.create({nombre:'Andres Vedia', email:'velasdia@hotmail.com', identificador:'1234'})
+ #   @usuario = UsuariosEmail.create({nombre:'Andres Vedia', email:'velasdia@hotmail.com', identificador:'1234'})
     #Llamamos al ActionMailer que creamos
-    CorreoElectronico.email_bienvenida(@usuario).deliver
+   # CorreoElectronico.email_bienvenida(@usuario).deliver
     #Mostramos el usuario en formato JSON
-    render json: @usuario
-  end
+  #  render json: @usuario
+ # end
 
   # GET /usuarios_emails/new
   def new
@@ -37,8 +37,9 @@ class UsuariosEmailsController < ApplicationController
 
     respond_to do |format|
       if @usuarios_email.save
+        CorreoElectronico.email_bienvenida(@usuarios_email).deliver
         format.html { redirect_to @usuarios_email, notice: 'Usuarios email was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @usuarios_email }
+        format.json { render json: @usuarios_email, status: :created, location: @usuarios_email }
       else
         format.html { render action: 'new' }
         format.json { render json: @usuarios_email.errors, status: :unprocessable_entity }
